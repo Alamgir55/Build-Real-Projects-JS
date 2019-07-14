@@ -95,20 +95,166 @@
 // console.log(b);
 // console.log(c);
 
-function interviewQA(job){
-    if(job === 'designer'){
-        return function(name){
-            console.log(name + ', can you please explain what UX design is?');
-        }
-    }else if(job === 'teacher'){
-        return function(name){
-            console.log('What subject do you teach, ' + name + '?');
-        }
-    }else{
-        return function(name){
-            console.log('Hello ' + name + ', what do you do?');
+// function interviewQA(job){
+//     if(job === 'designer'){
+//         return function(name){
+//             console.log(name + ', can you please explain what UX design is?');
+//         }
+//     }else if(job === 'teacher'){
+//         return function(name){
+//             console.log('What subject do you teach, ' + name + '?');
+//         }
+//     }else{
+//         return function(name){
+//             console.log('Hello ' + name + ', what do you do?');
+//         }
+//     }
+// }
+// const teacherQA = interviewQA('teacher');
+// const designerQA = interviewQA('designer');
+
+// teacherQA('Raynax');
+// designerQA('Rakib');
+// designerQA('Mark');
+
+// interviewQA('teacher')('Qin');
+
+// function collageQA(subject){
+//     if(subject === 'cs'){
+//         return function(name){
+//             console.log(name + ', do you any knowlege about programming');
+//         }
+//     }else if(subject === 'cys'){
+//         return function(name){
+//             console.log('Hey , '+ name + 'do know linex?')
+//         }
+//     }else{
+//         return function(name){
+//             console.log(name + 'what do you want to study');
+//         }
+//     }
+// }
+// collageQA('cs')('rick');
+// collageQA('cys')('raynax');
+
+// function game(){
+//     let score = Math.random() * 10;
+//     console.log(score >= 5);
+// }
+// game();
+
+// (function(){
+//     let score = Math.random() * 10;
+//     console.log(score >= 5);
+// })();
+// console.log(score);
+
+// (function(goodLuck){
+//     let score = Math.random() * 10;
+//     console.log(score >= 5 - goodLuck)
+// })(5);
+
+// function retirement(retirementAge){
+//     let a = ' years left until retirment.';
+//     return function(yearOfBirth){
+//         let age = 2019 - yearOfBirth;
+//         console.log((retirementAge - age) + a);
+//     }  
+// }
+// let retirementUS = retirement(66);
+// let retirementGermany = retirement(65);
+// let retirementIceland = retirement(67);
+
+
+// retirementUS(1992);
+// retirementGermany(1992);
+// retirementIceland(1992);
+
+// function interviewQA(job){
+//         if(job === 'designer'){
+//             return function(name){
+//                 console.log(name + ', can you please explain what UX design is?');
+//             }
+//         }else if(job === 'teacher'){
+//             return function(name){
+//                 console.log('What subject do you teach, ' + name + '?');
+//             }
+//         }else{
+//             return function(name){
+//                 console.log('Hello ' + name + ', what do you do?');
+//             }
+//         }
+
+//     }
+// function interviewQA(job){
+//     return function(name){
+//         if(job === 'desinger'){
+//             console.log(name + ', can you please explain what UX design is?');
+//         }else if(job === 'teacher'){
+//             console.log('What subject do you teach, ' + name + '?');
+
+//         }else{
+//             console.log('Hello ' + name + ', what do you do?');
+//         }
+//     }
+// }
+
+// let teacherQA = interviewQA('teacher');
+// let designerQA = interviewQA('desinger');
+// let noneQA = interviewQA();
+
+
+// teacherQA('Qin');
+// designerQA('Ashike');
+// noneQA('None');
+
+let john = {
+    name: 'john',
+    age: 26,
+    job: 'teacher',
+    presentation: function(style, timeOfDay){
+        if(style === 'formal'){
+            console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+        }else if(style === 'friendly'){
+            console.log('Hey! What\'s up? I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice '+ timeOfDay + '.');   
         }
     }
+};
+let emily ={
+    name: 'Emily',
+    age: 35,
+    job: 'designer'
 }
-const teacherQA = interviewQA('teacher');
-teacherQA('Raynax');
+
+john.presentation('formal', 'morning');
+john.presentation.call(emily, 'friendly', 'afternoon');
+
+let raynax = john.presentation.bind(john, 'friendly');
+
+raynax('afternoon');
+raynax('Morning');
+
+let emilyFormal = john.presentation.bind(emily, 'formal');
+emilyFormal('evening');
+
+
+let years = [1992,1994,1995,2018];
+
+function cal(arr, fun){
+    let arrKing = [];
+    for(let i = 0; i < arr.length; i++){
+        arrKing.push(fun(arr[i]));
+    }
+    return arrKing;
+}
+function myCal(el){
+    return 2019 - el;
+}
+function fullAge(el, limit){
+    return el >= limit;
+}
+
+let age = cal(years, myCal);
+console.log(age);
+let limitJP = cal(age, fullAge.bind(this, 20));
+console.log(limitJP);
