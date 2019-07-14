@@ -65,32 +65,50 @@
 // console.log(age);
 // console.log(obj.city);
 
-let years = [1992,1994,1995,2018];
+// let years = [1992,1994,1995,2018];
 
-function cal(arr, fun){
-    let arrKing = [];
-    for(let i = 0; i < arr.length; i++){
-        arrKing.push(fun(arr[i]));
-    }
-    return arrKing;
-}
-function myCal(el){
-    return 2019 - el;
-}
-function fullAge(el){
-    return el >= 18;
-}
-function maxHeartRate(el){
-    if(el >= 18 && el <= 81){
-        return Math.round(206.9 - (0.67 * el));
+// function cal(arr, fun){
+//     let arrKing = [];
+//     for(let i = 0; i < arr.length; i++){
+//         arrKing.push(fun(arr[i]));
+//     }
+//     return arrKing;
+// }
+// function myCal(el){
+//     return 2019 - el;
+// }
+// function fullAge(el){
+//     return el >= 18;
+// }
+// function maxHeartRate(el){
+//     if(el >= 18 && el <= 81){
+//         return Math.round(206.9 - (0.67 * el));
+//     }else{
+//         return -1;
+//     }
+// }
+
+// let a = cal(years, myCal);
+// let b = cal(a, fullAge);
+// let c = cal(a, maxHeartRate);
+// console.log(a);
+// console.log(b);
+// console.log(c);
+
+function interviewQA(job){
+    if(job === 'designer'){
+        return function(name){
+            console.log(name + ', can you please explain what UX design is?');
+        }
+    }else if(job === 'teacher'){
+        return function(name){
+            console.log('What subject do you teach, ' + name + '?');
+        }
     }else{
-        return -1;
+        return function(name){
+            console.log('Hello ' + name + ', what do you do?');
+        }
     }
 }
-
-let a = cal(years, myCal);
-let b = cal(a, fullAge);
-let c = cal(a, maxHeartRate);
-console.log(a);
-console.log(b);
-console.log(c);
+const teacherQA = interviewQA('teacher');
+teacherQA('Raynax');
