@@ -1,21 +1,24 @@
-// let john2 = {
-//     name: 'John',
-//     yearOfBirth: 1990,
-//     job: 'teacher'
-// };
-// let Person = function(firstName, lastName, job, age){
-//     this.firstName = firstName;
-//     this.lastName = lastName;
-//     this.job = job;
-//     this.age = age;
-// }
-// Person.prototype.calAge = function(year){
-//     console.log(year - this.age);
-// }
+let john2 = {
+    name: 'John',
+    yearOfBirth: 1990,
+    job: 'teacher'
+};
+let Person = function(firstName, lastName, job, age){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.job = job;
+    this.age = age;
+}
+Person.prototype.calAge = function(year){
+    console.log(year - this.age);
+}
 
-// let alex = new Person('Alex', 'raynax', 'Dev', 1992);
+let alex = new Person('alamgit', 'Rakib', 'WebDev', 1993);
 
-// alex.calAge(2019);
+console.log(alex);
+//alex.calAge(2019);
+let raynax = new Person('Alex', 'raynax', 'Dev', 1992);
+console.log(raynax); 
 
 // const personProto = {
 //     calAge: function(){
@@ -208,53 +211,53 @@
 // designerQA('Ashike');
 // noneQA('None');
 
-let john = {
-    name: 'john',
-    age: 26,
-    job: 'teacher',
-    presentation: function(style, timeOfDay){
-        if(style === 'formal'){
-            console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
-        }else if(style === 'friendly'){
-            console.log('Hey! What\'s up? I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice '+ timeOfDay + '.');   
-        }
-    }
-};
-let emily ={
-    name: 'Emily',
-    age: 35,
-    job: 'designer'
-}
+// let john = {
+//     name: 'john',
+//     age: 26,
+//     job: 'teacher',
+//     presentation: function(style, timeOfDay){
+//         if(style === 'formal'){
+//             console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+//         }else if(style === 'friendly'){
+//             console.log('Hey! What\'s up? I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice '+ timeOfDay + '.');   
+//         }
+//     }
+// };
+// let emily ={
+//     name: 'Emily',
+//     age: 35,
+//     job: 'designer'
+// }
 
-john.presentation('formal', 'morning');
-john.presentation.call(emily, 'friendly', 'afternoon');
+// john.presentation('formal', 'morning');
+// john.presentation.call(emily, 'friendly', 'afternoon');
 
-let raynax = john.presentation.bind(john, 'friendly');
+// let raynax = john.presentation.bind(john, 'friendly');
 
-raynax('afternoon');
-raynax('Morning');
+// raynax('afternoon');
+// raynax('Morning');
 
-let emilyFormal = john.presentation.bind(emily, 'formal');
-emilyFormal('evening');
+// let emilyFormal = john.presentation.bind(emily, 'formal');
+// emilyFormal('evening');
 
 
-let years = [1992,1994,1995,2018];
+// let years = [1992,1994,1995,2018];
 
-function cal(arr, fun){
-    let arrKing = [];
-    for(let i = 0; i < arr.length; i++){
-        arrKing.push(fun(arr[i]));
-    }
-    return arrKing;
-}
-function myCal(el){
-    return 2019 - el;
-}
-function fullAge(el, limit){
-    return el >= limit;
-}
+// function cal(arr, fun){
+//     let arrKing = [];
+//     for(let i = 0; i < arr.length; i++){
+//         arrKing.push(fun(arr[i]));
+//     }
+//     return arrKing;
+// }
+// function myCal(el){
+//     return 2019 - el;
+// }
+// function fullAge(el, limit){
+//     return el >= limit;
+// }
 
-let age = cal(years, myCal);
-console.log(age);
-let limitJP = cal(age, fullAge.bind(this, 20));
-console.log(limitJP);
+// let age = cal(years, myCal);
+// console.log(age);
+// let limitJP = cal(age, fullAge.bind(this, 20));
+// console.log(limitJP);
