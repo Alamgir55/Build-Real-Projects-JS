@@ -1,24 +1,24 @@
-let john2 = {
-    name: 'John',
-    yearOfBirth: 1990,
-    job: 'teacher'
-};
-let Person = function(firstName, lastName, job, age){
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.job = job;
-    this.age = age;
-}
-Person.prototype.calAge = function(year){
-    console.log(year - this.age);
-}
+// let john2 = {
+//     name: 'John',
+//     yearOfBirth: 1990,
+//     job: 'teacher'
+// };
+// let Person = function(firstName, lastName, job, age){
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.job = job;
+//     this.age = age;
+// }
+// Person.prototype.calAge = function(year){
+//     console.log(year - this.age);
+// }
 
-let alex = new Person('alamgit', 'Rakib', 'WebDev', 1993);
+// let alex = new Person('alamgit', 'Rakib', 'WebDev', 1993);
 
-console.log(alex);
-//alex.calAge(2019);
-let raynax = new Person('Alex', 'raynax', 'Dev', 1992);
-console.log(raynax); 
+// console.log(alex);
+// //alex.calAge(2019);
+// let raynax = new Person('Alex', 'raynax', 'Dev', 1992);
+// console.log(raynax); 
 
 // const personProto = {
 //     calAge: function(){
@@ -261,3 +261,125 @@ console.log(raynax);
 // console.log(age);
 // let limitJP = cal(age, fullAge.bind(this, 20));
 // console.log(limitJP);
+
+// let john = {
+//     name: 'John',
+//     yearOfBirth: 1990,
+//     calculateAge: function(){
+//         console.log(this);
+//         console.log(2019 - this.yearOfBirth);
+
+//         function innerFunction(){
+//             console.log(this);
+//         }
+//         innerFunction();
+//     }
+// }
+// //john.calculateAge();
+// let mike = {
+//     name: 'mike',
+//     yearOfBirth: 1992
+// }
+// mike.calAge = john.calculateAge;
+// mike.calAge();
+
+// let Person = function(name, yearOfBirth, job){
+//     this.name = name;
+//     this.yearOfBirth = yearOfBirth;
+//     this.job = job;
+// }
+
+// Person.prototype.calAges = function(){
+//     console.log(2019 - this.yearOfBirth);
+// }
+// Person.prototype.lastName = 'Smith';
+
+// let john = new Person('John', 1990, 'Dev');
+// let jane = new Person('Jane', 1992, 'Designer');
+// let mark = new Person('Mark', 1994, 'CYSE');
+
+// mark.calAges();
+
+// console.log(john.lastName);
+//console.log(john.hasOwnPr)
+//console.log(john.hasownproperty(name));
+
+// let personProto = {
+//     calAfe: function(){
+//         console.log(2019 - this.yearOfBirth);
+//     }
+// };
+
+// let jonh = Object.create(personProto);
+// jonh.name = 'John';
+// jonh.yearOfBirth = 1990;
+// //jonh.calAfe();
+
+// let jane = Object.create(personProto, {
+//     name: {value: 'Jane'},
+//     yearOfBirth: {value: 1992},
+//     job: {value: 'Desinger'}
+// });
+
+// const book1 = {
+//     title: 'Book One',
+//     author: 'John Doe',
+//     year: '2013',
+//     getSummary: function(){
+//         return `${this.title} was written by ${this.author} in ${this.year}`;
+//     }
+// };
+
+// console.log(book1.getSummary());
+
+// function Book(title, author, year){
+//     this.title = title;
+//     this.author = author;
+//     this.year = year;
+// }
+//     Book.prototype.getSummary = function(){
+//         return `${this.title} was written by ${this.author} in ${this.year}`;
+//     }
+//     Book.prototype.getAge = function(){
+//         const year = new Date().getFullYear() - this.year;
+//         return `${this.title} is ${year} years old`;
+//     }
+//     Book.prototype.revise = function(newYear){
+//         this.year = newYear;
+//         this.revise = true;
+//     }
+
+// function Magazine(title, author, year, month){
+//     Book.call(this, title, author, year);
+//     this.month = month;
+// }
+//     Magazine.prototype = Object.create(Book.prototype);
+
+//const book1 = new Book('Book One', 'John DOe', '2013');
+//const book2 = new Book('BOok Two', 'Jane Doe', '2016');
+
+// console.log(book2);
+// book2.revise(2019);
+// console.log(book2);
+
+// const magaz = new Magazine('Mag One', 'John Doe', '2018', 'fab');
+// console.log(magaz.getAge());
+// Magazine.prototype.constructor = Magazine;
+// console.log(magaz);
+
+// const bookProtos = {
+//     getSummary: function(){
+//         return `${this.title} was written by ${this.author} in ${this.year}`;
+//     },
+//     getAge: function(newYear){
+//         const years = new Date().getFullYear() - newYear;
+//         return `${this.title}  is ${years} years old `;
+//     }
+// };
+
+// const book1 = Object.create(bookProtos);
+// book1.title = 'Book One';
+// book1.author = 'John DOe';
+// book1.year = '2013';
+
+// console.log(book1);
