@@ -189,39 +189,60 @@
 // let multiplyByTwo = multiply.bind(this, 5);
 // console.log(multiplyByTwo(4));
 
-function mapForEach(arr, fn){
-    let newArr = [];
+// function mapForEach(arr, fn){
+//     let newArr = [];
 
-   for(let i = 0; i < arr.length; i++){
-        newArr.push(
-            fn(arr[i])
-        )
-   };
-   return newArr;
+//    for(let i = 0; i < arr.length; i++){
+//         newArr.push(
+//             fn(arr[i])
+//         )
+//    };
+//    return newArr;
+// }
+
+
+
+// let arr1 = [1,2,3];
+// console.log(arr1);
+
+// let arr2 = mapForEach(arr1, function(item){
+//     return item * 2;
+// });
+
+// console.log(arr2);
+
+// let checkPastLimit = function(limiter, item){
+//     return item > limiter;
+// }
+// let arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
+// console.log(arr4);
+
+// let checkPastLimitSimplified = function(limiter){
+//     return function(limiter, item){
+//         return item > limiter;
+//     }.bind(this, limiter);
+// };
+
+// let arr5 = mapForEach(arr1, checkPastLimitSimplified(1));
+// console.log(arr5);
+
+let person = {
+    firstName: 'Default',
+    lastName: 'Default',
+    getFullName: function(){
+        return this.firstName + ' ' + this.lastName;
+    }
 }
 
-
-
-let arr1 = [1,2,3];
-console.log(arr1);
-
-let arr2 = mapForEach(arr1, function(item){
-    return item * 2;
-});
-
-console.log(arr2);
-
-let checkPastLimit = function(limiter, item){
-    return item > limiter;
+let john = {
+    firstName: 'John',
+    lastName: 'Doe'
 }
-let arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
-console.log(arr4);
 
-let checkPastLimitSimplified = function(limiter){
-    return function(limiter, item){
-        return item > limiter;
-    }.bind(this, limiter);
-};
+john.__proto__ = person;
 
-let arr5 = mapForEach(arr1, checkPastLimitSimplified(1));
-console.log(arr5);
+for(let prop in john){
+    if(john.hasOwnProperty(prop)){
+        console.log(prop + ': ' + john[prop]);
+    }
+}
