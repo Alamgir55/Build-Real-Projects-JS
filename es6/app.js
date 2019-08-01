@@ -226,23 +226,201 @@
 // let arr5 = mapForEach(arr1, checkPastLimitSimplified(1));
 // console.log(arr5);
 
-let person = {
-    firstName: 'Default',
-    lastName: 'Default',
-    getFullName: function(){
-        return this.firstName + ' ' + this.lastName;
-    }
+// let person = {
+//     firstName: 'Default',
+//     lastName: 'Default',
+//     getFullName: function(){
+//         return this.firstName + ' ' + this.lastName;
+//     }
+// }
+
+// let john = {
+//     firstName: 'John',
+//     lastName: 'Doe'
+// }
+
+// john.__proto__ = person;
+
+// for(let prop in john){
+//     if(john.hasOwnProperty(prop)){
+//         console.log(prop + ': ' + john[prop]);
+//     }
+// }
+
+// let firstName = 'John';
+// let lastName = 'Smith';
+
+// const n = `${firstName} ${lastName}`;
+
+// console.log(n.startsWith('Jo'));
+// console.log(n.endsWith('th'));
+// console.log(n.includes('o'));
+// console.log(n.repeat(2));
+// console.log(`${firstName} `.repeat(5));
+
+// const years = [1990, 1965, 1985, 1937];
+
+// let ages5 = years.map(function(el){
+//     return 2019 - el;
+// });
+// console.log(ages5);
+
+// let ages6 = years.map(els => 2019 - els);
+// console.log(ages6);
+
+// ages6 = years.map((el, index) => `Age element ${index + 1}: ${2019 - el}. `);
+
+// console.log(ages6);
+
+// ages6 = years.map((el, index) => {
+//     let now = new Date().getFullYear();
+//     const age = now - el;
+//     return `Age element ${index + 1}: ${age}`;
+// });
+
+// console.log(ages6);
+
+// let box5 = {
+//     color: 'green',
+//     position: 1,
+//     clickMe: function(){
+//         console.log(this.color);
+//         let self = this;
+//         document.querySelector('.green').addEventListener('click', function(){
+//             let str = 'This is box number ' + self.position + ' and it is ' + self.color;
+//             alert(str);
+//         });
+//     }
+// };
+
+// box5.clickMe();
+
+// const box6 = {
+//     color: 'green',
+//     position: 1,
+//     clickMe: function() => {
+//         document.querySelector('.green').addEventListener('click', () => {
+//             let str = `This is box number ` + this.color + ' and it is ' + this.position;
+//             alert(str);
+//         });
+//     }
+// };
+// box6.clickMe();
+
+// function Person(name){
+//     this.name = name;
+// }
+// Person.prototype.myFriend66 = function(firends){
+
+//     let arr = firends.map(function(el){
+//         return this.name + ' is firends with ' + el;
+//     }.bind(this));
+//     console.log(arr);
+// }
+// let fr = ['Bob', 'Jane', 'Mark'];
+// new Person('John').myFriend66(fr);
+
+// Person.prototype.myFriend77 = function(friends){
+//     let arr = friends.map((el) => `${this.name} is friends with ${el}` );
+//     console.log(arr);
+// }
+// new Person('Mike').myFriend77(fr);
+
+// let john = ['john', 26];
+// let name = john[0];
+// let age = john[1];
+// console.log(age);
+
+// const [name, age] = ['john', 30];
+
+// console.log(age);
+
+// const obj = {
+//     firstName: 'John',
+//     lastName: 'Smith'
+// };
+// const {firstName, lastName} = obj;
+// console.log(firstName);
+// console.log(lastName);
+
+// const {firstName: a, lastName: b} = obj;
+// console.log(b);
+// console.log(a);
+
+// function calcAgeRetirment(year){
+//     let age = new Date().getFullYear() - year;
+//     return [age, 65 - age];
+// }
+// const [age2, retirment] = calcAgeRetirment(1992);
+// console.log(age2);
+// console.log(retirment);
+
+// let boxes = document.querySelectorAll('.box');
+// let boxesArr = Array.prototype.slice.call(boxes);
+// boxesArr.forEach(function(cur){
+//     cur.style.backgroundColor = 'dodgerblue';
+// });
+
+
+// const boxesArr6 = Array.from(boxes);
+
+// boxesArr6.forEach(cur => cur.style.backgroundColor = 'dodgerblue');
+
+// for(var i = 0; i < boxesArr.length; i++){
+//     if(boxesArr[i].className === 'box blue'){
+//        // continue;
+//        break;
+//     }
+//     boxesArr[i].textContent = 'I changed to blue';
+// }
+
+// for(const curr of boxesArr6){
+//     if(curr.className.includes('blue')){
+//         continue;
+//     }
+//     curr.textContent = 'I changed it blue 6s';
+// }
+
+// var age = [12, 17, 8, 21, 14, 11];
+
+// var full = age.map(function(cur){
+//     return cur >= 18;
+// });
+// console.log(full);
+// console.log(full.indexOf(true));
+// console.log(age[full.indexOf(true)]);
+
+// console.log(age.findIndex(curr => curr >= 18));
+
+// console.log(age.find(curr => curr >= 18));
+
+function addFourSum(a, b, c, d){
+    return a + b + c + d;
 }
 
-let john = {
-    firstName: 'John',
-    lastName: 'Doe'
-}
+const sum = addFourSum(100, 200, 300, 400);
+console.log(sum);
 
-john.__proto__ = person;
+let ar = [500, 600, 700, 800];
 
-for(let prop in john){
-    if(john.hasOwnProperty(prop)){
-        console.log(prop + ': ' + john[prop]);
-    }
-}
+const sum2 = addFourSum.apply(null, ar);
+console.log(sum2);
+
+const sum3 = addFourSum(...ar);
+console.log(sum3);
+
+const johnFamily = ['doe', 'jonny', 'johnson', 'jakie'];
+const mikeFamily = ['mike', 'mikes', 'mick', 'mock'];
+const bigFamily = [...johnFamily, 'likey', ...mikeFamily];
+console.log(bigFamily);
+
+const h = document.querySelector('h1');
+const boxes = document.querySelectorAll('.box');
+const all = [h, ...boxes];
+
+Array.from(all).forEach(curr => curr.style.color = 'blue' );
+
+console.log(all);
+let so = Array.from(ar);
+console.log(so);
+
