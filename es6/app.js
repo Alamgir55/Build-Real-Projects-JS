@@ -394,33 +394,90 @@
 
 // console.log(age.find(curr => curr >= 18));
 
-function addFourSum(a, b, c, d){
-    return a + b + c + d;
+// function addFourSum(a, b, c, d){
+//     return a + b + c + d;
+// }
+
+// const sum = addFourSum(100, 200, 300, 400);
+// console.log(sum);
+
+// let ar = [500, 600, 700, 800];
+
+// const sum2 = addFourSum.apply(null, ar);
+// console.log(sum2);
+
+// const sum3 = addFourSum(...ar);
+// console.log(sum3);
+
+// const johnFamily = ['doe', 'jonny', 'johnson', 'jakie'];
+// const mikeFamily = ['mike', 'mikes', 'mick', 'mock'];
+// const bigFamily = [...johnFamily, 'likey', ...mikeFamily];
+// console.log(bigFamily);
+
+// const h = document.querySelector('h1');
+// const boxes = document.querySelectorAll('.box');
+// const all = [h, ...boxes];
+
+// Array.from(all).forEach(curr => curr.style.color = 'blue' );
+
+// console.log(all);
+// let so = Array.from(ar);
+// console.log(so);
+
+// function isFullAge5(){
+//     //console.log(arguments);
+//     let argsArr = Array.prototype.slice.call(arguments);
+
+//     argsArr.forEach(function(cur){
+//         console.log((2019 - cur ) >= 18);
+//     });
+// }
+
+// //isFullAge5(1990, 1999, 1965);
+
+// function isFullAge6(limit, ...years){
+//     //console.log(years);
+//     years.forEach(cur => console.log(2019 - cur >= limit));
+// }
+// isFullAge6(16, 1990, 1999, 1965, 1965, 2018);
+
+// function SmithPerson(firstName, yearOfBirth, lastName = 'Smith', nationality = 'american'){
+    
+//     this.firstName = firstName;
+//     this.yearOfBirth = yearOfBirth;
+//     this.lastName = lastName;
+//     this.nationality = nationality;
+// }
+// let john = new SmithPerson('John', 1990);
+// let emily = new SmithPerson('emily', 1983, 'Diaz', 'spanish');
+
+const question = new Map();
+question.set('question', 'What is the official name of the lateste major JavaScript Version?');
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('correct', 3);
+question.set(true, 'Correct answer :D');
+question.set(false, 'Wrong, Please try again!');
+
+console.log(question.get('question'));
+console.log(question.size);
+
+// if(question.has(4)){
+//     question.delete(4);
+// }
+
+// question.forEach((value, key) => console.log(`This is ${key}, and it's set to ${value}`));
+
+
+for(let [key, value] of question.entries()){
+    //console.log(`This is ${key}, and it's set to ${value}`);
+    if(typeof(key) === 'number'){
+        console.log(`Answer ${key}: ${value}`);
+    }
 }
 
-const sum = addFourSum(100, 200, 300, 400);
-console.log(sum);
+const ans = parseInt(prompt('Write the correct answer'));
 
-let ar = [500, 600, 700, 800];
-
-const sum2 = addFourSum.apply(null, ar);
-console.log(sum2);
-
-const sum3 = addFourSum(...ar);
-console.log(sum3);
-
-const johnFamily = ['doe', 'jonny', 'johnson', 'jakie'];
-const mikeFamily = ['mike', 'mikes', 'mick', 'mock'];
-const bigFamily = [...johnFamily, 'likey', ...mikeFamily];
-console.log(bigFamily);
-
-const h = document.querySelector('h1');
-const boxes = document.querySelectorAll('.box');
-const all = [h, ...boxes];
-
-Array.from(all).forEach(curr => curr.style.color = 'blue' );
-
-console.log(all);
-let so = Array.from(ar);
-console.log(so);
-
+console.log(question.get(ans === question.get('correct')));.
