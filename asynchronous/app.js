@@ -1,20 +1,51 @@
+// function p(){
+//     return new Promise((resolve, reject)=>{
+//         //resolve(123);
+//         //reject(321);
+//         throw new Error('ERROR inside promise');
+//     });
+// }
 
-dothings();
+// try{
+//     p()
+//     .then(fwl, wtf2)
+//     .catch(wtf);
+// }catch(err){
+//     console.error('Try Catch: ', err);
+// }
 
-async function dothings(){
-    let p = await delay(1000);
-    console.log(p);
-}
+
+// function fwl(e){
+//     console.log('ftw resolve: ', e);
+// }    
+// function wtf(e){
+//     if(typeof e === 'object'){
+//         console.error('Wtf reject: ', e.message);
+//     }else{
+//         console.err('wtf reject: ', e);
+//     }
+    
+// }
+// function wtf2(e){
+//     console.error('wtf reject: ', e);
+// }
 
 
-function delay(ms){
-    return new Promise((resolve, reject) => {
-        resolve(ms);
-         reject(new Error('bad things happened'))
-         setTimeout(resolve, ms, 42 );   
-    });
-}
+// dothings();
 
+// async function dothings(){
+//     let p = await delay(1000);
+//     console.log(p);
+// }
+
+
+// function delay(ms){
+//     return new Promise((resolve, reject) => {
+//         resolve(ms);
+//          reject(new Error('bad things happened'))
+//          setTimeout(resolve, ms, 42 );   
+//     });
+// }
 
 // let datafile1 = fetch('./data.json');
 // let datafile2 = fetch('./data.json');
@@ -159,7 +190,7 @@ function delay(ms){
 // first();
 
 
-
+//////////////////////////////////////////////////////////////
 
 // function getRecipe(){
 //     console.log("DOm");
@@ -189,3 +220,98 @@ function delay(ms){
 //     }, 1500);
 // }
 // getRecipe();
+
+////////////////////////////////////////////////////////////////
+
+// const getIDs = new Promise((resolve, reject) => {
+//     setTimeout(()=>{
+//         resolve([100, 200, 300, 400, 500]);
+//     }, 1500);
+// });
+
+// const getRecipe = recId => {
+//     return new Promise((resolve, reject)=>{
+//         setTimeout((ID)=>{
+//             const recipe = {
+//                 title: 'Fresh tomato pasta',
+//                 publisher: 'Alex'
+//             }
+//             resolve(`${ID}: ${recipe.title}`);
+            
+//         }, 1500, recId);
+//     });
+// }
+// const getRelated = (publisher) => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout((pub)=>{
+//             const recipe2 = {
+//                 title: 'Itlian pizza',
+//                 publisher: 'Rex'
+//             }
+//             resolve(`${pub}: ${recipe2.title}`);
+//         }, 1500, publisher);
+//     });
+// }
+
+
+// getIDs
+//     .then((IDs)=>{
+//     console.log(IDs);
+//     return getRecipe(IDs[2]);
+// })  
+//     .then((recipeRes) => {
+//         console.log(recipeRes);
+//        return getRelated('ALamigr');
+//     })
+//     .then((recipe2Res)=> {
+//         console.log(recipe2Res);
+//     })
+//     .catch((error)=>{
+//         console.log('Error');
+//     });
+
+// console.log(getIDs);
+
+/////////////////////////////////////////////////
+
+const getIDs = new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        resolve([100, 200, 300, 400, 500]);
+    }, 1500);
+});
+
+const getRecipe = recId => {
+    return new Promise((resolve, reject)=>{
+        setTimeout((ID)=>{
+            const recipe = {
+                title: 'Fresh tomato pasta',
+                publisher: 'Alex'
+            }
+            resolve(`${ID}: ${recipe.title}`);
+            
+        }, 1500, recId);
+    });
+}
+const getRelated = (publisher) => {
+    return new Promise((resolve, reject) => {
+        setTimeout((pub)=>{
+            const recipe2 = {
+                title: 'Itlian pizza',
+                publisher: 'Rex'
+            }
+            resolve(`${pub}: ${recipe2.title}`);
+        }, 1500, publisher);
+    });
+}
+
+async function getRecipeAW(){
+    const IDs = await getIDs;
+    console.log(IDs);
+    const recipe = await getRecipe(IDs[3]);
+    console.log(recipe);
+    const related = await getRelated('Alamgir --');
+    console.log(related);
+
+    return recipe;
+}
+getRecipeAW().then( result => console.log(`${result} is the best cook ever`));
