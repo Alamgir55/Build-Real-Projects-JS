@@ -5,6 +5,8 @@ import Likes from './models/Likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likeView from './views/likesView';
+
 import {elements, renderLoader, clearLoader } from './views/base';
 
 /** Global state of the app 
@@ -14,7 +16,6 @@ import {elements, renderLoader, clearLoader } from './views/base';
  * - Liked recipes
 */
 const state = {};
-window.state = state;
 
 const controlSearch = async () => {
     // 1) Get query form view
@@ -85,12 +86,18 @@ const controlRecipe = async () => {
          state.recipe.calcServings();
    
          clearLoader();
-         recipeView.renderRecipe(state.recipe);
+         recipeView.renderRecipe(
+            state.recipe,
+            state.likes.isLiked(id)
+            );
       }catch(error){
+         //console.log(error);
          alert('Error processing went wrong');
       }
    }
 }
+
+
 
 const controlLike = () => {
    if(!state.likes) state.likes = new Likes();
@@ -102,11 +109,14 @@ const controlLike = () => {
          state.recipe.author,
          state.recipe.img
       );
-      console.log(state.likes);
+      likeView.toggleLikeBtn(true);
+      likeView.renderLike(newLike);
    }else{
       state.likes.deleteLike(currentID);
-      console.log(state.likes);
+      likeView.toggleLikeBtn(false);
+      likeView.deleteLike(currentID);
    }
+   likeView.toggleLikeMenu(state.likes.getNumLikes());
 }
 
 //window.addEventListener('hashchange', controlRecipe);
@@ -135,6 +145,15 @@ elements.shopping.addEventListener('click', e => {
    }
 });
 
+window.addEventListener('load', () => {
+   state.likes = new Likes();
+   state.likes.readStorage();
+
+   likeView.toggleLikeMenu(state.likes.getNumLikes());
+
+   state.likes.likes.forEach(like => likeView.renderLike(like));
+});
+
 
 elements.recipe.addEventListener('click', e => {
    if(e.target.matches('.btn-decrease, .btn-decrease *')){
@@ -153,4 +172,3 @@ elements.recipe.addEventListener('click', e => {
   // console.log(state.recipe);
 });
 
-window.l = new List();
